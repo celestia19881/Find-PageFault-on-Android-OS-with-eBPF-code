@@ -150,15 +150,10 @@ class PageFaultTracer:
         print("Loading eBPF program...")
         
         try:
-            # Try to load the program from file first
-            if os.path.exists("pagefault.bpf.c"):
-                with open("pagefault.bpf.c", "r") as f:
-                    bpf_text = f.read()
-                # BCC doesn't support the new BPF CO-RE format directly
-                # Fall back to inline program
-                self.bpf = BPF(text=BPF_PROGRAM)
-            else:
-                self.bpf = BPF(text=BPF_PROGRAM)
+            # Load the inline BPF program (BCC format)
+            # Note: The separate pagefault.bpf.c file is for reference and
+            # manual compilation, but BCC uses the inline program
+            self.bpf = BPF(text=BPF_PROGRAM)
         except Exception as e:
             print(f"Error loading BPF program: {e}")
             print("Make sure you have proper permissions (run as root)")

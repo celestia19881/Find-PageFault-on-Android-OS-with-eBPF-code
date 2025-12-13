@@ -125,12 +125,11 @@ dd if=/dev/zero of=/dev/null bs=1M count=100
 # Check SELinux status
 adb shell getenforce
 
-# If enforcing, temporarily set to permissive (for testing only!)
-adb shell setenforce 0
-
 # Check if device is rooted
 adb shell su -c id
 ```
+
+**WARNING**: Setting SELinux to permissive mode (`setenforce 0`) significantly reduces system security and should **ONLY** be done on dedicated test/development devices, never on production or personal devices. This disables important security protections. A better approach is to create proper SELinux policies for your tracing needs.
 
 #### B. "python3: command not found"
 

@@ -45,9 +45,8 @@ int main() {
 EOF
 
 # Compile it
-gcc /tmp/memtest.c -o /tmp/memtest 2>/dev/null
-
-if [ -f /tmp/memtest ]; then
+if gcc /tmp/memtest.c -o /tmp/memtest 2>/tmp/memtest_compile.err; then
+    rm -f /tmp/memtest_compile.err
     echo "Starting memory test program in background..."
     /tmp/memtest &
     MEMTEST_PID=$!
@@ -62,6 +61,10 @@ if [ -f /tmp/memtest ]; then
     echo ""
 else
     echo "Could not compile memory test program, skipping..."
+    if [ -f /tmp/memtest_compile.err ]; then
+        echo "Compilation error:"
+        cat /tmp/memtest_compile.err
+    fi
     echo ""
 fi
 

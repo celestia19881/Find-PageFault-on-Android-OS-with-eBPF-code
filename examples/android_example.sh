@@ -49,17 +49,17 @@ echo ""
 read -p "Enter package name to launch (or press Enter to skip): " PACKAGE
 
 if [ -n "$PACKAGE" ]; then
-    echo "Starting tracer in background..."
-    adb shell 'cd /data/local/tmp && python3 pagefault_tracer.py' &
-    TRACER_PID=$!
+    echo "Starting tracer (will run for 15 seconds)..."
+    echo "Launching app: $PACKAGE"
+    
+    # Start tracer with timeout and launch app
+    (adb shell 'cd /data/local/tmp && timeout 15 python3 pagefault_tracer.py' &)
     
     sleep 2
-    echo "Launching app: $PACKAGE"
     adb shell am start -n "$PACKAGE"
     
-    sleep 10
-    echo "Stopping tracer..."
-    kill $TRACER_PID 2>/dev/null
+    echo "Waiting for tracer to complete..."
+    sleep 14
     echo ""
 fi
 

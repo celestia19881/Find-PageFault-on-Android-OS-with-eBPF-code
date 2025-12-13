@@ -5,7 +5,10 @@
 CLANG := clang
 LLC := llc
 CFLAGS := -O2 -g -Wall -Werror
-BPF_CFLAGS := -target bpf -D__BPF_TRACING__ -I/usr/include -I/usr/include/bpf
+
+# Try to find BPF headers in common locations
+BPF_INCLUDE := $(shell if [ -d /usr/include/bpf ]; then echo "-I/usr/include/bpf"; fi)
+BPF_CFLAGS := -target bpf -D__BPF_TRACING__ -I/usr/include $(BPF_INCLUDE)
 
 # Target architecture (adjust for Android if needed)
 ARCH := $(shell uname -m | sed 's/x86_64/x86/' | sed 's/aarch64/arm64/')
