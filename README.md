@@ -2,6 +2,8 @@
 
 A powerful eBPF-based page fault tracer for Android and Linux systems. This tool allows you to monitor and analyze page faults in real-time, providing detailed information about memory access patterns and potential performance issues.
 
+> **🚀 Quick Start**: New to this tool? Check out the [QUICKSTART.md](QUICKSTART.md) guide to get up and running in minutes!
+
 ## Overview
 
 Page faults occur when a program tries to access memory that is not currently in RAM. This tool uses eBPF (extended Berkeley Packet Filter) to trace these events with minimal overhead, making it ideal for performance analysis and debugging on Android devices.
