@@ -1,0 +1,10 @@
+# Python dependencies for eBPF Page Fault Tracer
+# Install with: pip3 install -r requirements.txt
+
+# BCC - BPF Compiler Collection
+# Note: On most systems, BCC should be installed via system package manager
+# as it has kernel dependencies
+# Ubuntu/Debian: sudo apt-get install python3-bcc
+# Fedora/RHEL: sudo dnf install python3-bcc
+# If pip installation is needed:
+bcc>=0.18.0
