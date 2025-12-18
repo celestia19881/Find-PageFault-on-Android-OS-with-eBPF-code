@@ -128,7 +128,7 @@ deb-src http://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted univer
     
     - cd /home/ouyang/libbpf-bootstrap/examples/c && rm -f pagefault.bpf.o pagefault.skel.h pagefault_monitor && ./build_android.sh
 
-*** 如果实在搞不出来就用ai解决吧 ***
+** 如果实在搞不出来就用ai解决吧 **
 
 
 # 四、 使用eBPF程序
@@ -144,6 +144,7 @@ deb-src http://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted univer
 - cd /data/local/tmp
 - chmod +x pagefault_monitor
 - ./pagefault_monitor
+
 
 
 
